@@ -146,30 +146,51 @@ function generateDNAs() {
   let count = 0;
   let duplicateFoundCount = 0;
   const racesCount = races.length;
+
+  let totalCount = 0;
+  let currentRaceCount = [];
   for (let _raceIndex = 0; _raceIndex < racesCount; ++_raceIndex) {
     const raceQuantity = races[_raceIndex].quantity;
-    for (let i = 0; i < raceQuantity; i++) {
-      const _dna = genDNA(_raceIndex);
+    totalCount += raceQuantity;
+    currentRaceCount.push({
+      raceIndex: _raceIndex,
+      quantity: 0,
+      maxQuantity: raceQuantity,
+    });
+  }
 
-      if (Exists.has(_dna.hash)) {
-        console.log(
-          races[_raceIndex].name +
-            " " +
-            i +
-            " " +
-            _dna.hash +
-            " WAS A DUPLICATE"
+  for (let i = 0; i < totalCount; ++i) {
+    const _raceLength = currentRaceCount.length;
+    //Gen Race Index
+    const rand = Math.random();
+    const _raceIndex = Math.floor(rand * _raceLength);
+
+    //Generate DNA
+    const _dna = genDNA(_raceIndex);
+
+    if (Exists.has(_dna.hash)) {
+      console.log(
+        races[_raceIndex].name + " " + i + " " + _dna.hash + " WAS A DUPLICATE"
+      );
+      --i;
+      ++duplicateFoundCount;
+    } //
+    else {
+      console.log(races[_raceIndex].name, _dna);
+      Exists.set(_dna.hash, i);
+      ++count;
+      schemas.push({ hash: _dna.hash, attributes: _dna.attributes });
+      //Add one to current race quantity
+      ++currentRaceCount[_raceIndex].quantity;
+      //Remove race if reached max quantity
+      if (
+        currentRaceCount[_raceIndex].quantity >=
+        currentRaceCount[_raceIndex].maxQuantity
+      ) {
+        currentRaceCount = currentRaceCount.filter(
+          (e) => e.raceIndex != _raceIndex
         );
-        --i;
-        ++duplicateFoundCount;
-      } //
-      else {
-        console.log(races[_raceIndex].name, _dna);
-        Exists.set(_dna.hash, i);
-        ++count;
-        schemas.push({ hash: _dna.hash, attributes: _dna.attributes });
       }
-      //Generate DNA
     }
   }
   //DONE GENERATING DNA
@@ -177,6 +198,39 @@ function generateDNAs() {
     `NFT count: ${count}, duplicate found count: ${duplicateFoundCount}`
   );
   createDnaFile();
+
+  // for (let _raceIndex = 0; _raceIndex < racesCount; ++_raceIndex) {
+  //   const raceQuantity = races[_raceIndex].quantity;
+  //   //
+  //   for (let i = 0; i < raceQuantity; i++) {
+  //     const _dna = genDNA(_raceIndex);
+
+  //     if (Exists.has(_dna.hash)) {
+  //       console.log(
+  //         races[_raceIndex].name +
+  //           " " +
+  //           i +
+  //           " " +
+  //           _dna.hash +
+  //           " WAS A DUPLICATE"
+  //       );
+  //       --i;
+  //       ++duplicateFoundCount;
+  //     } //
+  //     else {
+  //       console.log(races[_raceIndex].name, _dna);
+  //       Exists.set(_dna.hash, i);
+  //       ++count;
+  //       schemas.push({ hash: _dna.hash, attributes: _dna.attributes });
+  //     }
+  //     //Generate DNA
+  //   }
+  // }
+  // //DONE GENERATING DNA
+  // console.log(
+  //   `NFT count: ${count}, duplicate found count: ${duplicateFoundCount}`
+  // );
+  // createDnaFile();
 }
 
 module.exports = { generateDNAs };

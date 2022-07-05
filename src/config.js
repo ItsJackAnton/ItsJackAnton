@@ -12,7 +12,7 @@ const fileType = "png";
 const races = [
   {
     name: "mama",
-    quantity: 10, //if mainQuantity is greater than 0 this "quantity" becomes a weight
+    quantity: 15, //if mainQuantity is greater than 0 this "quantity" becomes a weight
     layersOrder: [
       { name: "background" },
       { name: "body" },
@@ -23,7 +23,7 @@ const races = [
   },
   {
     name: "momo",
-    quantity: 12, //if mainQuantity is greater than 0 this "quantity" becomes a weight
+    quantity: 15, //if mainQuantity is greater than 0 this "quantity" becomes a weight
     layersOrder: [
       { name: "background" },
       { name: "body" },
