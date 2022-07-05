@@ -5,6 +5,7 @@ const {
   projectDescription,
   author,
   startIndex,
+  baseUri,
 } = require("./config.js");
 //
 const buildDir = `${basePath}/build`;
@@ -23,7 +24,7 @@ function saveSingleNftMetadata(_dnas, _index) {
 
     name: `${projectName} #${_edition}`,
     description: projectDescription,
-    image: _dna.image,
+    image: `ipfs://${baseUri}/${_edition}.png`,
     edition: _edition,
     attributes: _dna.attributes.map((e) => {
       return { trait_type: e.trait_type, value: e.value };

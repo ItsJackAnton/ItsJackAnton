@@ -1,15 +1,15 @@
 const { generateDNAs } = require("./src/dna-generator.js");
-const { generateEditionsMetaFiles } = require("./src/meta-generator.js");
 const { generateImages } = require("./src/image-generator.js");
-const { injectUris } = require("./src/injectUris.js");
+const { generateEditionsMetaFiles } = require("./src/meta-generator.js");
 
 (() => {
-  //Step One
+  //> Step One
   // generateDNAs();
-  //Step Two
-  generateImages();
-  //Step Three
-  // injectUris();
-  //Step Four
-  // generateEditionsMetaFiles();
+  //> Step Two
+  // generateImages();
+  //> Step Three
+  //Safe Images on ipfs
+  //Replace base uri in config.js with the uri given by ipfs
+  //> Step Four
+  generateEditionsMetaFiles();
 })();
