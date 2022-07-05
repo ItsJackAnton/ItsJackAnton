@@ -1,11 +1,10 @@
 const basePath = process.cwd();
 const fs = require("fs");
 const {
-  baseUri,
-  fileType,
   projectName,
   projectDescription,
   author,
+  startIndex,
 } = require("./config.js");
 //
 const buildDir = `${basePath}/build`;
@@ -18,7 +17,7 @@ function buildSetup() {
 }
 function saveSingleNftMetadata(_dnas, _index) {
   const _dna = _dnas[_index];
-  const _edition = _index + 1;
+  const _edition = _index + startIndex;
   const _singleMetadata = {
     dna: _dna.hash,
 

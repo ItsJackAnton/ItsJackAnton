@@ -1,6 +1,6 @@
 const basePath = process.cwd();
 const fs = require("fs");
-const { format } = require("./config.js");
+const { format, startIndex } = require("./config.js");
 const { createCanvas, loadImage } = require("canvas");
 
 //
@@ -18,7 +18,7 @@ function buildSetup() {
 
 const saveLayer = (_canvas, _edition) => {
   fs.writeFileSync(
-    `${imageDir_json}/${_edition + 1}.png`,
+    `${imageDir_json}/${_edition + startIndex}.png`,
     _canvas.toBuffer("image/png")
   );
 };

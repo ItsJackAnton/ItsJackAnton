@@ -1,7 +1,8 @@
 const author = "Anon";
 const projectName = "MOMO";
 const projectDescription = "This is a description";
-const baseUri = "baseUri";
+const baseUri = "momoURI";
+const startIndex = 0;
 const format = {
   width: 460,
   height: 460,
@@ -47,4 +48,5 @@ module.exports = {
   fileType,
   races,
   rarityWeight,
+  startIndex,
 };

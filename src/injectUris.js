@@ -5,7 +5,7 @@ const { baseUri } = require("./config.js");
 const buildDir = `${basePath}/build`;
 const dnaFilePath = `${buildDir}/_DNAs.json`;
 
-function replaceDnaFileUris() {
+function injectUris() {
   //add uri to _DNAs.json and from there to metadatas
   let _dnas = JSON.parse(fs.readFileSync(dnaFilePath));
 
@@ -16,4 +16,4 @@ function replaceDnaFileUris() {
   fs.writeFileSync(`${dnaFilePath}`, JSON.stringify(_dnas, null, 2));
 }
 
-module.exports = { replaceDnaFileUris };
+module.exports = { injectUris };
