@@ -7,7 +7,7 @@ const { injectUris } = require("./src/injectUris.js");
   //Step One
   // generateDNAs();
   //Step Two
-  // generateImages();
+  generateImages();
   //Step Three
   // injectUris();
   //Step Four
