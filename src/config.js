@@ -1,7 +1,7 @@
 const author = "Anon";
 const projectName = "MOMO";
 const projectDescription = "This is a description";
-const baseUri = "momoURI";
+const baseUri = "QmYsTrJ3U9xg6gRbepBuECkxiyw716EH9GxvsZ3iJpdCUg";
 const startIndex = 0;
 const format = {
   width: 460,
