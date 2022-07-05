@@ -39,11 +39,15 @@ const rarityWeight = [
   { rarityType: "rare", weight: 25 },
   { rarityType: "common", weight: 70 },
 ];
+
+function getURI(id) {
+  return `ipfs://${baseUri}/${id}.${fileType}`;
+}
 module.exports = {
   author,
   projectName,
   projectDescription,
-  baseUri,
+  getURI,
   format,
   fileType,
   races,
