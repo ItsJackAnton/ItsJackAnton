@@ -4,12 +4,12 @@ const { generateEditionsMetaFiles } = require("./src/meta-generator.js");
 
 (() => {
   //> Step One
-  // generateDNAs();
+  generateDNAs();
   //> Step Two
   // generateImages();
   //> Step Three
   //Safe Images on ipfs
   //Replace base uri in config.js with the uri given by ipfs
   //> Step Four
-  generateEditionsMetaFiles();
+  // generateEditionsMetaFiles();
 })();
